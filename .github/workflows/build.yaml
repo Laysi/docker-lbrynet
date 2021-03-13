@@ -18,7 +18,7 @@ jobs:
           echo ::set-output name=version::`cat version`
       - name: Download lbrynet
         run: |
-          wget lbrynet.zip https://github.com/lbryio/lbry-sdk/releases/download/${{ steps.getVersion.outputs.version }}/lbrynet-linux.zip >>/dev/null 2>&1; echo $?pass
+          wget -nv lbrynet.zip https://github.com/lbryio/lbry-sdk/releases/download/${{ steps.getVersion.outputs.version }}/lbrynet-linux.zip
       - name: Unzip
         uses: montudor/action-zip@v0.1.1
         with:
