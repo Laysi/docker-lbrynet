@@ -19,12 +19,12 @@ jobs:
         id: git-check
         run: |
           echo ::set-output name=modified::$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")
-          cat ::set-output name=version:: version
+          echo::set-output name=version:: && cat version
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add version
-          git commit -am ${{ steps.git-check.outputs.modified }}
+          git commit -am ${{ steps.git-check.outputs.version }}
           git push
