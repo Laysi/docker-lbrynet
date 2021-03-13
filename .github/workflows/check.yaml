@@ -23,5 +23,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -am | cat version
+          git add version
+          git commit -am ${{ steps.git-check.outputs.modified }}
           git push
