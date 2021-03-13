@@ -45,7 +45,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/laysi/docker-lbrynet:${{ steps.getVersion.outputs.version }}
+          tags: ghcr.io/laysi/docker-lbrynet:latest
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.clone_url }}
-            org.opencontainers.image.revision=${{ steps.getVersion.outputs.version }}
+            org.opencontainers.image.revision=latest
