@@ -36,7 +36,16 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.getVersion.outputs.version }}
+          tags: laysi/docker-lbrynet:${{ steps.getVersion.outputs.version }}
+          labels: |
+            org.opencontainers.image.source=${{ github.event.repository.clone_url }}
+            org.opencontainers.image.revision=${{ steps.getVersion.outputs.version }}
+      - name: Build and Push container image(latest)
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: laysi/docker-lbrynet:${{ steps.getVersion.outputs.version }}
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.clone_url }}
             org.opencontainers.image.revision=${{ steps.getVersion.outputs.version }}
