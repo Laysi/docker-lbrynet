@@ -3,7 +3,7 @@
 
 ## Quick Start
 ``` bash
-docker run ghcr.io/laysi/docker-lbrynet/lbrynet -p 5279:5279 5280:5280
+docker run ghcr.io/laysi/docker-lbrynet -p 5279:5279 5280:5280
 ```
 
 ## API document
